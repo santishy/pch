@@ -1,0 +1,25 @@
+// Variables
+@import "variables";
+.big-padding
+{
+	padding:30px;
+}
+.large-padding
+{
+	padding: 10px 15px;
+}
+.sale-data
+{
+	padding:1em;
+	text-align:center;
+	border-right:solid 1px #222;
+	span{
+		display:block;
+		font-size:2.2em;
+		color:#3f51b5;
+	}
+}
+.top-space
+{
+	margin-top:1em;
+}
