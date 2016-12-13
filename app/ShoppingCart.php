@@ -41,7 +41,7 @@ class ShoppingCart extends Model
         $total=0;
         foreach($this->articulos()->get() as $articulo)
         {
-            $total+=$articulo->price;
+            $total+=Dolar::cambio($articulo->price)*$articulo->qty;
         }
         return $total;
     }

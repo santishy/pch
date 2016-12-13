@@ -35,10 +35,6 @@ class InShoppingCartsController extends Controller
             }
             else
             {
-                $shopinngCart=$inShoppingCart->shoppingCart();
-                dd($shopinngCart->order());
-                $order=$shopinngCart->order();
-                $order->total=$shopinngCart->total();
                 $field=$request->name;
                 $inShoppingCart->$field=$request->value;
                 $inShoppingCart->save();

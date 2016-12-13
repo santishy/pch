@@ -13,6 +13,6 @@ class Dolar extends Model
     	$dolar = DB::table('dolares')->orderBy('id_dolar','desc')
                                                 ->take(1)->get();
         $cambio=$dolar[0]->precio;
-        return ($monto/$cambio);
+        return number_format(($monto/$cambio),2);
     }
 }

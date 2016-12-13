@@ -70,7 +70,15 @@ class Paypal
     {
         return \PaypalPayment::amount()
                 ->setCurrency('USD')
-                ->setTotal(Dolar::Cambio($this->shopping_cart->total()));
+                ->setTotal($this->shopping_cart->total());
+                //->setDetails($this->details());
+    }
+    public function details()
+    {
+        return \PaypalPayment::details()
+                ->setTax(0)
+                ->setShipping(0)
+                ->setSubTotal($this->shopping_cart->total());
     }
     public function execute($paymentId,$payerID)
     {

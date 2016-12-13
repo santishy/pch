@@ -44,6 +44,7 @@ class PaymentsController extends Controller
     {
         $payment=Payment::create(['forma_pago'=>$request->forma_pago,'total'=>$request->total]);
         \Session::put('id_pago',$payment->id);
+
         switch ($request->forma_pago) {
             case 'paypal':
                 return $this->paypal($request);
@@ -101,7 +102,6 @@ class PaymentsController extends Controller
         if($response->state=='approved')
         {
             $shopping_cart->approve();
-            //dd($shopping_cart->customid);
             $order= Order::createFormPaypalResponse($response,$shopping_cart,\Session::get('id_pago'));
             return view('orders.order',['order'=>$order,'shopping_cart'=>$shopping_cart]);
 

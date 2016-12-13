@@ -11,7 +11,7 @@ class InShoppingCart extends Model
     public $timestamps=false;
     public function shoppingCart()
     {
-    	return $this->belongsTo('App\ShoppingCart')
+    	return $this->belongsTo('App\ShoppingCart','shopping_cart_id','id')
     	->first();
     }
 }

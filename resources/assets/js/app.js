@@ -1,5 +1,5 @@
 $.fn.editable.defaults.mode='inline';
-$.fn.editable.defaults.ajaxOptions={type:'PUT',dataType:'json'};
+$.fn.editable.defaults.ajaxOptions={type:'PUT'};
 $(document).ready(function(){
 	
 /*****************************************************************/
@@ -31,6 +31,11 @@ $(document).ready(function(){
 			{value:'recibido',text:'Recibido'}
 		]
 	});
+	$('.set-recipient-name').editable();
+	$('.set-email').editable();
+	$('.set-address').editable();
+	$('.set-city').editable();
+	$('.set-state').editable();
 /**************************************************************/
 
 });
