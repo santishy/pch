@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Mail\OrderCreated;
+use Illuminate\Support\Facades\Mail;
 class Order extends Model
 {
     protected $table='orders';
@@ -46,5 +47,17 @@ class Order extends Model
     public static function totalMonthCount()
     {
         return Order::monthly()->count();
+    }
+    public function sendEmail()
+    {
+        return Mail::to('santi_shy@hotmail.com')
+            ->send(new OrderCreated($this));
+    }
+    public function shoppingCart()
+    {
+        return belongsTo('App\ShoppingCart');
+    }
+    public function customID(){
+        return $this->shoppingCart->customid;
     }
 }

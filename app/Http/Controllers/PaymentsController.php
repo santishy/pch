@@ -95,6 +95,7 @@ class PaymentsController extends Controller
      */
     public function updateAndStore(Request $request)
     {
+     
         //$shopping_cart=ShoppingCart::findBySessionShoppingCart(\Session::get('shopping_cart_id'));
         $shopping_cart=$request->shopping_cart;
         $paypal=new Paypal($shopping_cart);
@@ -103,8 +104,8 @@ class PaymentsController extends Controller
         {
             $shopping_cart->approve();
             $order= Order::createFormPaypalResponse($response,$shopping_cart,\Session::get('id_pago'));
+            $order->sendMail();
             return view('orders.order',['order'=>$order,'shopping_cart'=>$shopping_cart]);
-
         }
     }
 
